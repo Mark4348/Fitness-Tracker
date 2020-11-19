@@ -1,7 +1,7 @@
 {
-  "name": "mongoose_skeleton",
+  "name": "fitnesstracker",
   "version": "1.0.0",
-  "description": "",
+  "description": "A great fitness app to help track your fitness progress!",
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",

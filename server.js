@@ -19,6 +19,7 @@ mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/sleepy-oasis-23
 
 // routes
 app.use(require("./public/js/api.js"));
+app.use(require("./public/js/stats.js"));
 
 app.listen(PORT, () => {
   console.log(`App running on port ${PORT}!`);
