@@ -1,16 +1,16 @@
 const express = require("express");
 const mongoose = require("mongoose");
-
+const logger = require("morgan");
 const PORT = process.env.PORT || 3000;
-
 const app = express();
+app.use(logger("dev"));
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 app.use(express.static("public"));
 
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/sleepy-oasis-23896", {
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/workout", {
   useNewUrlParser: true,
   useUnifiedTopology: true,
   useCreateIndex: true,
@@ -18,8 +18,8 @@ mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/sleepy-oasis-23
 });
 
 // routes
-app.use(require("./public/js/api.js"));
-app.use(require("./public/js/stats.js"));
+require("./routes/apiRoutes.js")(app);
+require("./routes/htmlRoutes.js")(app);
 
 app.listen(PORT, () => {
   console.log(`App running on port ${PORT}!`);
